@@ -190,8 +190,219 @@ Converting the variables like Gender, partner, dependents, phone service, multip
 ## Data Transformation (Data after converting the text to binary form)
 
 # Phase4: Model Implementation
-	Logistic Regression 
-	Random Forest
-	Tree
+- Logistic Regression 
+- Random Forest
+- Tree
 
+After going through the above EDA (Exploratory Data Analysis) we will develop some predictive models and compare them. We will develop Logistic Regression and Random Forest.
+It is important to scale the variables in logistic regression so that all of them are within a range of 0 to 1. Before model implementation we split the data into training and test sets (70% vs 30%)
+
+## Cross validation:
+
+For any model in machine learning this considered as a best practice if the model is tested with the independent data-set.  Normally any prediction model work on unknown dataset which is also known as training set. It is fit to work with any model in the future. It helps us better use our data and it gives us much more information about our algorithm performance.   
+Since our data is imbalanced dataset the cross validation process with 10 folds is carried out. Data Sampler widget selects a subset of data instances from an input dataset. 
+
+![image](https://github.com/Karuna-Nagre22/Data-Science-Project/assets/169028009/3fe23b3e-59e5-43f5-9143-129da3c5924b)
+
+## Train Test splitting by using Data Sampler widget.
+In Data sampler we are dividing the data into 70, 30 ratio and cross validation as 10
+
+Train a training set.
+Validating a validation set (eg. using k-fold cross validation)
+Testing the model with a test set.
+This below figure shows that the 70% of the data which is 4931 records are into training set.
+
+![image](https://github.com/Karuna-Nagre22/Data-Science-Project/assets/169028009/0b340a7e-39ff-4ba4-94bf-56cb357faddc)
+
+And the remaining data that is 30% (2112) records are into test set.
+
+![image](https://github.com/Karuna-Nagre22/Data-Science-Project/assets/169028009/77619ba6-01a6-459f-91c6-24efcec56e08)
+
+## Logistic Regression:
+
+Logistic regression is a supervised learning classification algorithm used to predict the probability of a target variable. The nature of target or dependent variable is dichotomous, which means there would be only two possible classes. 
+In simple words, the dependent variable is binary in nature having data coded as either 1 (stands for success/yes) or 0 (stands for failure/no).
+
+## Random Forest:
+
+Random forest is a supervised learning algorithm which is used for both classification as well as regression. But however, it is mainly used for classification problems. 
+As we know that a forest is made up of trees and more trees means more robust forest. 
+Similarly Random Forest algorithm creates decision trees on data samples and gets the prediction from each of them and finally selects the best solution by means of voting. 
+It is assembled method which is better than a single decision tree because it reduces the over-fitting by averaging the result. 
+
+## Working of Random Forest Algorithm
+
+We can understand the working of Random Forest algorithm with the help of following steps
+Step1- First, start with the selection of random samples from a given dataset.
+Step2- Next, this algorithm will construct a decision tree for every sample. Then it will get the prediction result from every decision tree.
+Step3- In this step, voting will be performed for every predicted result.
+
+## The following diagram will illustrate its working-
+
+![image](https://github.com/Karuna-Nagre22/Data-Science-Project/assets/169028009/d875b7f3-c63c-4280-8018-1cf68a985b1b)
+
+## Tree:
+
+Tree is a simple algorithm that splits the data into nodes by class purity. It is a precursor to Random Forest. Tree in Orange is designed in-house and handle both discrete and continuous datasets. It can also be used for both classification and regression tasks.
+
+### Tree parameters:
+- Induce binary tree: build a binary tree (split into two child nodes).
+- Min. number of instances in leaves: if checked, the algorithm will never construct a split which would put less than the specified number of training examples into any of the branches.
+- Do not split subsets smaller than: forbids the algorithm to split the nodes with less than the given number of instances.
+- Limit the maximal tree depth: limits the depth of the classification tree to the specified number of node levels.
+
+## Training The Models 
+
+Data is getting trained through the models (Logistic Regression, Random Forest, and Tree) and making the predictions for the test data.
+
+![image](https://github.com/Karuna-Nagre22/Data-Science-Project/assets/169028009/9fa8c4c0-4b69-4f97-b0dd-623f5b0d4728)
+
+# Phase 5: Evaluation (Model in terms of accuracy)
+
+## Evaluation results for Training Data:
+
+![image](https://github.com/Karuna-Nagre22/Data-Science-Project/assets/169028009/7bc548fa-7e65-41ad-836e-2c363e26edd0)
+
+The logistic regression model work better than the other two models random forest and Tree model.  For the training set, the accuracies are 0.75 for Tree, 0.79 for Random Forest and 0.80 for Logistic Regression.
+
+## Evaluation Results for Test Data:
+
+![image](https://github.com/Karuna-Nagre22/Data-Science-Project/assets/169028009/80d9a306-f362-49f4-ab01-c5bbde177be6)
+
+The logistic regression model work better than the other two models random forest and Tree model. For the test set, the accuracies are 0.75 for Tree, 0.79 for Random Forest and 0.80 for Logistic Regression.
+
+## Confusion Matrix:
+
+The confusion matrix is a matrix used to determine the performance of the classification models for a given set of test data. It can only be determined if the true values for test data are known.  Since it shows the errors in the model performance in the form of a matrix, hence also known as an error matrix.
+
+## Some features of Confusion matrix are:
+
+For the 2 prediction classes of classifiers, the matrix is of 2*2 table.
+The matrix is divided into two dimensions, that are predicted values and actual values along with the total number of predictions.
+Predicted values are those values, which are predicted by the model, and actual values are the true values for the given observations.
+
+True Negative: Model has given prediction No, and the real or actual value was also No.
+
+True Positive: The model has predicted yes, and the actual value was also true.
+
+False Negative: The model has predicted no, but the actual value was Yes, it is also called as Type-II error.
+
+False Positive: The model has predicted Yes, but the actual value was No. It is also called a Type-I error.
+
+## Accuracy:
+
+The accuracy is the measurement of how many cases the model has correctly identified. It is one of the important parameters to determine the accuracy of the classification problems. It defines how often the model predicts the correct output. It can be calculated as the ratio of the number of correct predictions made by the classifier to all number of predictions made by the classifiers.
+
+**Accuracy** = TP+TN/TP+FP+FN+TN
+
+## Precision:
+
+It can be defined as the number of correct outputs provided by the model or out of all positive classes that have predicted correctly by the model, how many of them were actually true. It can be calculated as:
+
+Precision=TP/TP+FP
+
+## Recall: 
+
+It is defined as the out of total positive classes, how our model predicted correctly. The recall must be as high as possible.
+
+Recall=TF/TP+FN
+
+## F-measure:
+
+If two models have low precision and high recall or vice versa, it is difficult to compare these models. So, for this purpose, we can use F-score. This score helps us to evaluate the recall and precision at the same time. The F-score is maximum if the recall is equal to the precision.
+
+The F1 score is the harmonic mean of the precision and recall. The higher F1 score is, the better performance of the model (best value is at 1 — perfect precision and recall)
+
+F-score= 2*Recall*Precision/Recall+Precision.
+
+## Sensitivity:
+
+Sensitivity measures the proportion of actual positive cases that are correctly captured by the model
+
+Sensitivity = TP/TP+TN
+
+## Specificity:
+
+Specificity measures the ability to detect the actual negative cases correctly.
+
+Specificity=TN/TN+FP
+
+# Implementation of confusion matrix and ROC analysis for Train Test Data:  
+
+![image](https://github.com/Karuna-Nagre22/Data-Science-Project/assets/169028009/e6cc7a2a-5745-435e-9a3b-708cf6045e0d)
+
+## Confusion matric for Logistic Regression of Training Dataset
+
+![image](https://github.com/Karuna-Nagre22/Data-Science-Project/assets/169028009/4d82b8db-89ff-47ed-aa39-c61dfa7e7afc)
+
+There are actual and predicted values . It has been taken 4931 records for Training set.
+
+True Positive (TP) = 3217 (These are cases in which we predict yes (they churned), and they did churn.
+
+True Negative(TN) = 748 (We predicted no, and they didn’t churn).
+
+False Positive(FP) = 384 (We predicted yes, but they didn’t actually churn, also known as Type I error) 
+
+False Negative(FN) = 582 (We predicted no, but they actually churned, also known as Type II error)
+
+## Confusion matric for Logistic Regression of Test Dataset
+
+![image](https://github.com/Karuna-Nagre22/Data-Science-Project/assets/169028009/38bb6ce1-da6d-49ed-938b-07d500d64a63)
+
+There are actual and predicted values.  It has been taken 2112 records for Training set.
+
+True Positive (TP) = 1408 (These are cases in which we predict yes (they churned), and they did churn.
+
+True Negative(TN) = 261 (We predicted no, and they didn’t churn).
+
+False Negative(FP) = 165 (We predicted yes, but they didn’t actually churn, also known as Type I error)
+
+False Positive(FN) = 278 (We predicted no, but they actually churned, also known as Type II error)
+
+## ROC Curve:
+
+A receiver operating characteristic curve, or ROC curve is a graphical plot that illustrates the diagnostic ability of a binary classifier system as its discrimination threshold is varied. 
+ROC curve is a two-dimensional graph in which the false positive rate(specificity) is plotted on the x-axis and the true positive rate (1-sensitivity) is plotted no the y-axis. 
+The ROC curves are useful to visualize and compare the performance of classifier methods.
+The closer the curve follows the left-hand border and then the top border of the ROC space, the more accurate the classifier.
+
+## ROC of the training dataset for all the models 
+
+![image](https://github.com/Karuna-Nagre22/Data-Science-Project/assets/169028009/47769a5f-38d2-40d3-a876-cf6baec27219)
+
+This ROC curve is constructed by plotting the sensitivity against 1-specificity for each possible cut-off. The maximum values on x-axis and y-axis is 0 to 1. These are probability. So, the area is equal to 1.
+The diagonal connects from origin to other outer edge of the square. This diagonal divides the square exactly into two parts that is 0.5 and 0.5 
+Anything above 0.5 is the value addition that we are doing to this analysis. More the region better the model it is. 
+The ROC (Receiver Operating Characteristic) Curve is a relationship between True Positive Rate and False Positive Rate. Logistic Regression, which is the red line, has an area of 0.849 under the curve. It means the model has performed better. 
+The AUC of this model is between 0.5 and 1 
+AUC ROC-curve of Logistic Regression = 0.849
+AUC ROC-curve of Random Forest = 0.820
+AUC ROC-curve of Tree = 0.629
+We see that the model Logistic Regression leads to higher AUC and should be preferred over Models Tree and Random Forest.
+
+## ROC of the test dataset for all the models 
+
+![image](https://github.com/Karuna-Nagre22/Data-Science-Project/assets/169028009/dcde14ea-15a2-4214-a7be-adb32c3242ca)
+
+The AUC of this model is between 0.5 and 1 
+AUC ROC-curve of Logistic Regression = 0.833
+AUC ROC-curve of Random Forest = 0.796
+AUC ROC-curve of Tree = 0.596
+We see that the model Logistic Regression which is (red line) leads to higher AUC and should be preferred over Models Tree and Random Forest.
+
+## Conclusion
+
+Telecommunication industry always suffers from a very high churn rates when one industry offers a better plan than the previous there is a high possibility of the customer churning from the present due to a better plan in such a scenario it is very difficult to avoid losses but through prediction we can keep it to a minimal level. 
+
+We identified several important churn predictor variables from these models and compared these models on accuracy measures.
+
+Customers with month-to-month contracts are less likely to churn.
+
+Customers with internet service, in particular fiber optic service, are more likely to churn.
+
+Customers who have been with the company longer or have paid more in total are less likely to churn.
+
+The Logistic Regression is found to be the best predictive model with good accuracy compared to other models for the data set taken.
+
+Logistic Regression model helps to identity the probable churn customers and then make the necessary business decisions.
 
