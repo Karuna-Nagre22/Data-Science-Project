@@ -394,15 +394,11 @@ We see that the model Logistic Regression which is (red line) leads to higher AU
 
 Telecommunication industry always suffers from a very high churn rates when one industry offers a better plan than the previous there is a high possibility of the customer churning from the present due to a better plan in such a scenario it is very difficult to avoid losses but through prediction we can keep it to a minimal level. 
 
-We identified several important churn predictor variables from these models and compared these models on accuracy measures.
-
-Customers with month-to-month contracts are less likely to churn.
-
-Customers with internet service, in particular fiber optic service, are more likely to churn.
-
-Customers who have been with the company longer or have paid more in total are less likely to churn.
+- We identified several important churn predictor variables from these models and compared these models on accuracy measures.
+- Customers with month-to-month contracts are less likely to churn.
+- Customers with internet service, in particular fiber optic service, are more likely to churn.
+- Customers who have been with the company longer or have paid more in total are less likely to churn.
 
 The Logistic Regression is found to be the best predictive model with good accuracy compared to other models for the data set taken.
-
 Logistic Regression model helps to identity the probable churn customers and then make the necessary business decisions.
 
